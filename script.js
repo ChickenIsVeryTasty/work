@@ -1,5 +1,3 @@
-
-// Gather all the scripts that are used to hold answer images.
 function findRelevantScript(dataHash) {
     let scripts = document.getElementsByTagName("script");
     let match = null;
@@ -129,3 +127,15 @@ function setup() {
         });
     });
 }
+
+(function() {
+    'use strict';
+
+    setup()
+
+    var pushState = history.pushState;
+    history.pushState = function () {
+        pushState.apply(history, arguments);
+        setup()
+    }
+})();
